@@ -4,11 +4,11 @@
  * Licence: GPLv3 - General Pulbic Licence version 3
  */
 
-(function($) {
+(function ($) {
 	"use strict"; // Start of use strict
 
 	// Smooth scrolling using jQuery easing
-	$('a[href*="#"]:not([href="#"])').click(function() {
+	$('a[href*="#"]:not([href="#"])').click(function () {
 		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 			var target = $(this.hash);
 			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -28,8 +28,17 @@
 	});
 
 	// Closes responsive menu when a link is clicked
-	$('.navbar-collapse>ul>li>a').click(function() {
+	$('.navbar-collapse>ul>li>a').click(function () {
 		$('.navbar-collapse').collapse('hide');
 	});
 
 })(jQuery); // End of use strict
+
+$(document).ready(function () {
+	var $headerTitle = $(".header-title");
+	var position = $headerTitle.position();
+	var padding = 10;
+	var left = position.left + padding;
+	var top = position.top + padding;
+	$headerTitle.find(".header-title-container").css("background-position", "-" + left + "px -" + top + "px");
+});
