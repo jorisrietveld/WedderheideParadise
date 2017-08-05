@@ -68,15 +68,14 @@
 				</ul>
 
 				<div class="navbar-nav">
+
 					{# Language switcher #}
 					{% for locale in locales %}
 						<a class="btn btn-lg flag-icon-background flag-icon-{{ locale == 'en' ? 'gb' : locale }} m-1 btn-language"
 						   href="{{ path(app.request.attributes.get("_route"), app.request.query.all|merge({"_locale": locale})) }}">
 						</a>
 					{% endfor %}
-					{#<a class="btn btn-lg flag-icon-background flag-icon-nl m-1 btn-language" href="/nl{{ app.request.getPathInfo() }}"></a>
-					<a class="btn btn-lg flag-icon-background flag-icon-de m-1 btn-language" href="/de{{ app.request.getPathInfo() }}"></a>
-					<a class="btn btn-lg flag-icon-background flag-icon-gb m-1 btn-language" href="/en{{ app.request.getPathInfo() }}"></a>#}
+
 					<a class="btn m-1 btn-info"
 					   href="{{ path('login') }}">{{ 'navigation.autentication.login.button'|trans }}</a>
 				</div>
@@ -85,16 +84,14 @@
 	</nav>
 {% endblock %}
 
+
 {# The header of the webpage. #}
 {% block pageHeader %}
 	<header class="header-standard">
 		{% block pageHeaderTitleHolder %}
-			{#<div class="container text-center">#}
 			<div class="container">
 				<h1 class="title-font">
-					{% block pageHeaderTitle %}
-						{{ 'home.header.title'|trans }}
-					{% endblock %}
+					{% block pageHeaderTitle %}	{{ 'home.header.title'|trans }}	{% endblock %}
 				</h1>
 				{% block pageHeaderSubtitle %}
 				{% endblock %}
@@ -103,12 +100,12 @@
 	</header>
 {% endblock pageHeader %}
 
+
 {# The main content of the webpage.#}
 {% block pageContent %}
-
 {% endblock %}
-{{ dump(app) }}
-{{ dump( app.request.getLocale() ) }}
+
+
 {# The footer of the webpage. #}
 {% block pageFooter %}
 	<!-- Footer -->

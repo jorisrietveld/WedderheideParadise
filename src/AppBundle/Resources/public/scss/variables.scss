@@ -4,6 +4,17 @@
  * Licence: GPLv3 - General Pulbic Licence version 3
  */
 
-.white-text{
+@import "fonts";
+
+/* Globally used Colors */
+$darkTransparent: rgba(0, 0, 0, 0.8);
+$lightTransparent: rgba(255, 255, 255, 0.8);
+
+/* Globally used animation effects */
+$ease: cubic-bezier(.47, .01, 0, 1.01);
+
+$titleFont: "'Galindo', cursive bold";
+
+.white-text {
 	color: #FFFFFF;
 }
