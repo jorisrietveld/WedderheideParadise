@@ -6713,40 +6713,55 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   font-size: 8em; }
 
 .header-standard {
-  background: url(http://wedderheide.nl/highslide/images/large/jurgen44..png) no-repeat center center fixed;
+  background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  width: 100vw; }
-  @media (min-width: 992px) {
-    .header-standard {
-      padding-top: 30vh;
-      padding-right: 0;
-      padding-left: 0;
-      padding-bottom: 32vh; } }
+  height: 200vh;
+  width: 100vw;
+  padding-top: 50px;
+  /*@include media-breakpoint-up(lg) {
+  	padding-top: 30vh;
+  	padding-right: 0;
+  	padding-left: 0;
+  	padding-bottom:32vh;
+  }*/ }
 
 .header-title {
-  background: url(https://www.trestlewood.com/image/780a/29609/BlogDateBoard.png);
-  background-size: 100%;
-  background-attachment: scroll;
-  overflow: hidden;
+  background: url(https://www.trestlewood.com/image/780a/29609/BlogDateBoard.png) no-repeat;
+  background-size: 100% 120%;
   display: inline-block;
-  padding: 10px;
+  padding-top: 225px;
+  padding-bottom: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
   font-weight: bold;
-  font-family: arial;
+  font-family: 'Galindo', cursive;
   color: transparent;
-  font-size: 200px; }
+  font-size: 10em;
+  width: 95vw;
+  height: 85vh;
+  text-align: center;
+  overflow: visible; }
 
-.header-title-container {
-  background: url(http://wedderheide.nl/highslide/images/large/jurgen44..png) no-repeat center center fixed;
+.header-title-container-1 {
+  background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /* background: url(http://wedderheide.nl/highslide/images/large/jurgen44..png) -20px -20px repeat;*/
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.8);
+  -webkit-background-clip: text;
+  font-size: 1.2em; }
+
+.header-title-container-2 {
+  background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.8);
   -webkit-background-clip: text; }
 
 /*
@@ -6887,9 +6902,10 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 
 }
 */
+/*
 section {
-  padding: 100px 0; }
-
+	padding: 100px 0;
+}*/
 /* This file contains the styles of all the navigation elements of the website. */
 /**
  * Author: Joris Rietveld <jorisrietveld@gmail.com>

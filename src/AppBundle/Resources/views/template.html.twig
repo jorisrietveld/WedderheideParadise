@@ -87,9 +87,10 @@
 
 {# The header of the webpage. #}
 {% block pageHeader %}
-	<header class="bg-primary header-standard">
+	<header class="header-standard">
 		{% block pageHeaderTitleHolder %}
-			<div class="container text-center">
+			{#<div class="container text-center">#}
+			<div class="container">
 				<h1 class="title-font">
 					{% block pageHeaderTitle %}
 						{{ 'home.header.title'|trans }}

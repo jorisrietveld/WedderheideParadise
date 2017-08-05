@@ -34,11 +34,52 @@
 
 })(jQuery); // End of use strict
 
-$(document).ready(function () {
-	var $headerTitle = $(".header-title");
-	var position = $headerTitle.position();
-	var padding = 10;
-	var left = position.left + padding;
-	var top = position.top + padding;
-	$headerTitle.find(".header-title-container").css("background-position", "-" + left + "px -" + top + "px");
-});
+/*
+var el = document.body; //Parent Element. Text is centered inside.
+var mainText = "THIS IS THE FIRST LINE"; //Header Text.
+var subText = "THIS TEXT HAS A KNOCKOUT EFFECT"; //Knockout Text.
+var fontF = "Roboto, Arial"; //Font to use.
+var mSize = 42; //Text size.
+
+//Centered text display:
+var tBox = centeredDiv(el), txtMain = mkDiv(tBox, mainText), txtSub = mkDiv(tBox),
+	ts = tBox.style, stLen = textWidth(subText, fontF, mSize)+5; ts.color = "#fff";
+ts.font = mSize+"pt "+fontF; ts.fontWeight = 100; txtSub.style.fontWeight = 400;
+
+//Generate subtext SVG for knockout effect:
+txtSub.innerHTML =
+	"<svg xmlns='http://www.w3.org/2000/svg' width='"+stLen+"px' height='"+(mSize+11)+"px' viewBox='0 0 "+stLen+" "+(mSize+11)+"'>"+
+	"<rect x='0' y='0' width='100%' height='100%' fill='#fff' rx='4px' ry='4px' mask='url(#txtSubMask)'></rect>"+
+	"<mask id='txtSubMask'>"+
+	"<rect x='0' y='0' width='100%' height='100%' fill='#fff'></rect>"+
+	"<text x='"+(stLen/2)+"' y='"+(mSize+6)+"' font='"+mSize+"pt "+fontF+"' text-anchor='middle' fill='#000'>"+subText+"</text>"+
+	"</mask>"+
+	"</svg>";
+
+//Relevant Helper Functions:
+function centeredDiv(parent) {
+	//Container:
+	var d = document.createElement('div'), s = d.style;
+	s.display = "table"; s.position = "relative"; s.zIndex = 999;
+	s.top = s.left = 0; s.width = s.height = "100%";
+	//Content Box:
+	var k = document.createElement('div'), j = k.style;
+	j.display = "table-cell"; j.verticalAlign = "middle";
+	j.textAlign = "center"; d.appendChild(k);
+	parent.appendChild(d); return k;
+}
+
+function mkDiv(parent, tCont) {
+	var d = document.createElement('div');
+	if(tCont) d.textContent = tCont;
+	parent.appendChild(d); return d;
+}
+
+function textWidth(text, font, size) {
+	var canvas = window.textWidthCanvas || (window.textWidthCanvas = document.createElement("canvas")),
+		context = canvas.getContext("2d"); context.font = size+(typeof size=="string"?" ":"pt ")+font;
+	return context.measureText(text).width;
+
+}
+
+	*/
