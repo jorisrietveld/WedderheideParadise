@@ -2,8 +2,34 @@
  * Author: Joris Rietveld <jorisrietveld@gmail.com>
  * Created: 16-07-2017 12:11
  * Licence: GPLv3 - General Pulbic Licence version 3
- */
+ *//*
+'third-party/font-awesome/css/font-awesome.min.css'
+'third-party/tether/dist/css/tether.min.css'
+'third-party/bootstrap/dist/css/bootstrap.min.css'
+'third-party/flag-icon-css/css/flag-icon.min.css'
+*/
+
+/* Import the Font-awesome library for icons used on the website. */
+@import "../../../../../web/third-party/font-awesome/scss/font-awesome";
+
+/* Import the Tether library for accurate positioning elements relative to each other. */
+@import "../../../../../web/third-party/tether/src/css/tether";
+
+/* Import the Bootstrap library because I am an lazy person and it gives me the feeling
+   that I can still write code when I drunk.  */
+@import "../../../../../web/third-party/bootstrap/scss/bootstrap";
+
+/* Import the Flag-icon library for painting localization buttons */
+@import "../../../../../web/third-party/flag-icon-css/sass/flag-icon";
+
+/* This file contains variables that are used through out the entire theme of the website */
 @import "variables";
+
+/* This file contains non standard font definitions that will be used on the website. */
 @import "fonts";
+
+/* This file contains the styles of the global website theme like elements of the navigation bar, footer and media queries */
 @import "theme";
+
+/* This file contains the styles of all the navigation elements of the website. */
 @import "navigation";

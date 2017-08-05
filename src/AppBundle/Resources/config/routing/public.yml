@@ -1,0 +1,24 @@
+# Author: Joris Rietveld <jorisrietveld@gmail.com>
+# Created: 05-08-2017 06:58
+# Licence: GPLv3 - General Public Licence version 3
+
+default:
+    path: /
+    defaults:
+        _controller: 'AppBundle:Home:home'
+
+home:
+    path: /home
+    defaults:
+        _controller: 'AppBundle:Home:home'
+
+
+login:
+    path: /login
+    defaults:
+        _controller: 'AppBundle:Home:home'
+
+register:
+    path: /register
+    defaults:
+        _controller: 'AppBundle:Home:home'

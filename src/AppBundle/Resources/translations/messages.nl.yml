@@ -16,70 +16,26 @@ navigation:
     home:
         title: 'Home'
         submenu:
-            about: 'Over kees & roos'
+            about: 'Over de wedderheide party'
             route: 'Route'
             contact: 'Contact'
-    camping:
-        title: 'Camping'
-        submenu:
-            info: 'Informatie'
-            prices: 'prijzen'
-            reserve: 'Reserveren'
-            photos: 'Fotos'
-    appartments:
-        title: 'Appartamenten'
-        submenu:
-            info: 'Informatie'
-            prices: 'Prijzen'
-            reserve: 'Reserveren'
-            photos: 'Fotos'
-    facilities:
-        title: 'Facalitijten'
-        submenu:
-            info: 'Informatie'
-            sanitair: 'Sanitair'
-    surroundings:
-        title: 'De Omgeving'
-        submenu:
-            cycling: 'Fietsen'
-            hiking: 'Wandelen'
-            swimming: 'Zwemmen'
-            events: 'Evenementen'
-            dayTrips: 'Uitstapjes'
+    editions:
+        title: 'Party Edities'
+    bands:
+        title: 'Bands'
+    autentication:
+        login:
+            button: 'Aanmelden'
 home:
     header:
-        title: 'Ahimsa'
-        subtitle: 'Camping a la Ferme in het hard van Bresse.'
+        title: 'Wedderheide Paradise'
     content:
         title:
-            about: 'Over kees & Roos'
+            about: 'De wedderheide party'
             route: 'Route'
             contact: 'Neem contact met ons op'
         text:
             about: 'Some incredable intresting text just continue reading, by doing so will be waisting your time Good job.'
-        form:
-            contact:
-                name: 'naam'
-                subject: 'Onderwerp'
-                email: 'Email adres'
-                message: 'Bericht'
-                send: 'Verstuuren'
-camping:
-    header:
-        title: 'De camping'
-    content:
-        title:
-            info: 'Informatie'
-            prices: 'Prijzen'
-            reserve: 'Reserveren'
-            photos: 'Fotos'
-
-        text:
-            info: 'Informatie enzo'
-            prices: 'Prijzen'
-            reserve: 'Reserveren'
-            photos: 'Fotos'
-
         form:
             contact:
                 name: 'naam'

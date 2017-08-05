@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: nl
+    locales: [nl,de,en]
 
 framework:
     #esi: ~
@@ -15,6 +16,7 @@ framework:
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
         strict_requirements: ~
+
     form: ~
     csrf_protection: ~
     validation: { enable_annotations: true }
@@ -41,6 +43,8 @@ twig:
     form_themes:
         - 'AppBundle:Form:bootstrap_4_horizontal_layout.html.twig'
         - 'AppBundle:Form:bootstrap_4_layout.html.twig'
+    globals:
+        locales: '%locales%'
 
 # Doctrine Configuration
 doctrine:
@@ -81,3 +85,8 @@ assetic:
           custom-fonts-ttf:
             inputs: '@AppBundle/Resources/public/fonts/TitleFont.TTF'
             output: 'fonts/TitleFont.ttf'
+
+jms_i18n_routing:
+    default_locale: nl
+    locales: [nl,de,en]
+    strategy: prefix_except_default

@@ -37,45 +37,48 @@
 {% block navigationBar %}
 	<!-- Navigation -->
 	<nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+		        data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false"
+		        aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="container">
 			<div class="collapse navbar-collapse" id="navbarExample">
 				<ul class="navbar-nav mr-auto">
 					<li>
-						<a class="nav-link text-white" href="{{ path('default') }}#page-top">{{ 'navigation.home.title'|trans }}</a>
+						<a class="nav-link text-white"
+						   href="{{ path('default') }}#page-top">{{ 'navigation.home.title'|trans }}</a>
 					</li>
 					{% block navigationHomeSubmenu %}
 					{% endblock %}
 
 					<li class="nav-item">
-						<a class="nav-link text-white" href="{{ path('camping') }}">{{ 'navigation.camping.title'|trans }}</a>
+						<a class="nav-link text-white"
+						   href="{{ path('default') }}">{{ 'navigation.editions.title'|trans }}</a>
 					</li>
-					{% block navigationCampingSubmenu %}
+					{% block navigraionEditionsSubmenu %}
 					{% endblock %}
 
 					<li class="nav-item">
-						<a class="nav-link text-white" href="{{ path('appartments') }}">{{ 'navigation.appartments.title'|trans }}</a>
+						<a class="nav-link text-white"
+						   href="{{ path('default') }}">{{ 'navigation.bands.title'|trans }}</a>
 					</li>
-					{% block navigationAppartmentSubmenu %}
+					{% block navigationBandsSubmenu %}
 					{% endblock %}
-
-					<li class="nav-item">
-						<a class="nav-link text-white" href="{{ path('facilities') }}">{{ 'navigation.facilities.title'|trans }}</a>
-					</li>
-					{% block navigationFacilitiesSubmenu %}
-					{% endblock %}
-
-					<li class="nav-item">
-						<a class="nav-link text-white" href="{{ path('surrounding') }}">{{ 'navigation.surroundings.title'|trans }}</a>
-					</li>
 				</ul>
 
 				<div class="navbar-nav">
-					<button class="btn btn-lg flag-icon-background flag-icon-nl m-1 btn-language"></button>
-					<button class="btn btn-lg flag-icon-background flag-icon-fr m-1 btn-language"></button>
-					<button class="btn btn-lg flag-icon-background flag-icon-gb m-1 btn-language"></button>
+					{# Language switcher #}
+					{% for locale in locales %}
+						<a class="btn btn-lg flag-icon-background flag-icon-{{ locale == 'en' ? 'gb' : locale }} m-1 btn-language"
+						   href="{{ path(app.request.attributes.get("_route"), app.request.query.all|merge({"_locale": locale})) }}">
+						</a>
+					{% endfor %}
+					{#<a class="btn btn-lg flag-icon-background flag-icon-nl m-1 btn-language" href="/nl{{ app.request.getPathInfo() }}"></a>
+					<a class="btn btn-lg flag-icon-background flag-icon-de m-1 btn-language" href="/de{{ app.request.getPathInfo() }}"></a>
+					<a class="btn btn-lg flag-icon-background flag-icon-gb m-1 btn-language" href="/en{{ app.request.getPathInfo() }}"></a>#}
+					<a class="btn m-1 btn-info"
+					   href="{{ path('login') }}">{{ 'navigation.autentication.login.button'|trans }}</a>
 				</div>
 			</div>
 		</div>
@@ -84,19 +87,18 @@
 
 {# The header of the webpage. #}
 {% block pageHeader %}
-	<header class="bg-primary text-white test-header">
-		<div class="container text-center">
-			<h1 class="title-font">
-				{% block pageHeaderTitle %}
-					{{ 'home.header.title'|trans }}
+	<header class="bg-primary header-standard">
+		{% block pageHeaderTitleHolder %}
+			<div class="container text-center">
+				<h1 class="title-font">
+					{% block pageHeaderTitle %}
+						{{ 'home.header.title'|trans }}
+					{% endblock %}
+				</h1>
+				{% block pageHeaderSubtitle %}
 				{% endblock %}
-			</h1>
-			<p class="lead">
-				{% block pageHeaderSubTitle %}
-					{{ 'home.header.subtitle'|trans }}
-				{% endblock %}
-			</p>
-		</div>
+			</div>
+		{% endblock %}
 	</header>
 {% endblock pageHeader %}
 
@@ -104,7 +106,8 @@
 {% block pageContent %}
 
 {% endblock %}
-
+{{ dump(app) }}
+{{ dump( app.request.getLocale() ) }}
 {# The footer of the webpage. #}
 {% block pageFooter %}
 	<!-- Footer -->
