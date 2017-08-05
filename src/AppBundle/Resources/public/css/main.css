@@ -6743,26 +6743,31 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   width: 95vw;
   height: 85vh;
   text-align: center;
-  overflow: visible; }
-
-.header-title-container-1 {
-  background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0.8);
-  -webkit-background-clip: text;
-  font-size: 1.2em; }
-
-.header-title-container-2 {
-  background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0.8);
-  -webkit-background-clip: text; }
+  overflow: visible;
+  	/*&.header-title-container:nth-child(1) {
+  
+  
+  	}
+  
+  	&.header-title-container:nth-child(2) {
+  		background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
+  		-webkit-background-size: cover;
+  		-moz-background-size: cover;
+  		-o-background-size: cover;
+  		background-size: cover;
+  		-webkit-text-fill-color: rgba(0,0,0,0.8);
+  		-webkit-background-clip: text;
+  	}*/ }
+  .header-title .header-title-container {
+    background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.8);
+    -webkit-background-clip: text; }
+    .header-title .header-title-container:first-child {
+      font-size: 1.2em; }
 
 /*
 .wedderheide-title-background{
