@@ -1,0 +1,24 @@
+# Author: Joris Rietveld <jorisrietveld@gmail.com>
+# Created: 16-07-2017 12:40
+# Licence: GPLv3 - General Public Licence version 3
+
+HomePages:
+    resource: '@AppBundle/Resources/config/routing/home.yml'
+
+AppartmentPages:
+    resource: '@AppBundle/Resources/config/routing/apartments.yml'
+
+CampingPages:
+    resource: '@AppBundle/Resources/config/routing/camping.yml'
+
+FacilitiesPages:
+    resource: '@AppBundle/Resources/config/routing/facilities.yml'
+
+PricesPages:
+    resource: '@AppBundle/Resources/config/routing/prices.yml'
+
+SurroundingPages:
+    resource: '@AppBundle/Resources/config/routing/surrounding.yml'
+
+ReservePages:
+    resource: '@AppBundle/Resources/config/routing/reserve.yml'

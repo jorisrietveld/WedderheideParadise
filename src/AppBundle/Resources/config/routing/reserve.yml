@@ -1,0 +1,10 @@
+# Author: Joris Rietveld <jorisrietveld@gmail.com>
+# Created: 16-07-2017 12:53
+# Licence: GPLv3 - General Public Licence version 3
+reserve:
+    path:     /reserveren
+    defaults: { _controller: AppBundle:Reserve:reserveren }
+
+reserve_camping:
+    path:     /reserveren/camping
+    defaults: { _controller: AppBundle:Reserve:reserverenCamping }

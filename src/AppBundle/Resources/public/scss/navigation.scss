@@ -1,0 +1,12 @@
+/**
+ * Author: Joris Rietveld <jorisrietveld@gmail.com>
+ * Created: 16-07-2017 18:37
+ * Licence: GPLv3 - General Pulbic Licence version 3
+ */
+.btn-language {
+	background-size: 115%;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.5); /* The shade of black that you want*/
+		background-blend-mode: multiply;
+	}
+}

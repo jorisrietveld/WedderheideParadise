@@ -1,0 +1,35 @@
+/**
+ * Author: Joris Rietveld <jorisrietveld@gmail.com>
+ * Created: 16-07-2017 12:11
+ * Licence: GPLv3 - General Pulbic Licence version 3
+ */
+
+.title-font{
+	font-family: TitleFont;
+	font-size: 9em;
+}
+
+header {
+	padding-top: 30vh;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom:32vh;
+}
+
+.test-header{
+	background: no-repeat url('../images/22c1018b2e.jpeg');
+	background-size: cover;
+}
+
+@media (min-width: 992px) {
+	header {
+		padding-top: 30vh;
+		padding-right: 0;
+		padding-left: 0;
+		padding-bottom:32vh;
+	}
+}
+
+section {
+	padding: 100px 0;
+}

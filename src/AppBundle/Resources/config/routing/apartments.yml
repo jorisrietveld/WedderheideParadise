@@ -1,0 +1,6 @@
+# Author: Joris Rietveld <jorisrietveld@gmail.com>
+# Created: 16-07-2017 12:41
+# Licence: GPLv3 - General Public Licence version 3
+appartments:
+    path:     /appartement
+    defaults: { _controller: AppBundle:Appartement:appartement }
