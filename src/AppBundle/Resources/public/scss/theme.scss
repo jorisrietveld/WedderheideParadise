@@ -24,7 +24,7 @@
 }
 
 .header-title {
-	background: url(https://www.trestlewood.com/image/780a/29609/BlogDateBoard.png) no-repeat;
+	background: url(../images/elements/wooden_plank_1.png) no-repeat;
 	background-size: 100% 120%;
 
 	display:inline-block;
@@ -46,7 +46,12 @@
 		-webkit-text-fill-color: $darkTransparent;
 		-webkit-background-clip: text;
 		&:first-child{
-			font-size: 1.2em;
+			//font-size: 1.2em;
 		}
 	}
+}
+
+.page-section{
+	margin-top: 100px;
+	margin-bottom: 50px;
 }

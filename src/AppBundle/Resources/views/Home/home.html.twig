@@ -9,15 +9,15 @@
 
 {% block navigationHomeSubmenu %}
 	<li class="nav-item">
-		<a class="nav-link" href="{{ path('home') }}#about">{{ 'navigation.home.submenu.about'|trans }}</a>
+		<a class="nav-link" href="{{ path('default') }}#about">{{ 'navigation.home.submenu.about'|trans }}</a>
 	</li>
 
 	<li class="nav-item">
-		<a class="nav-link" href="{{ path('home') }}#route">{{ 'navigation.home.submenu.route'|trans }}</a>
+		<a class="nav-link" href="{{ path('default') }}#route">{{ 'navigation.home.submenu.route'|trans }}</a>
 	</li>
 
 	<li class="nav-item">
-		<a class="nav-link" href="{{ path('home') }}#contact">{{ 'navigation.home.submenu.contact'|trans }}</a>
+		<a class="nav-link" href="{{ path('default') }}#contact">{{ 'navigation.home.submenu.contact'|trans }}</a>
 	</li>
 {% endblock %}
 
@@ -25,13 +25,13 @@
 	<div class="container-fluid">
 		<h1 class="header-title">
 			<span class="header-title-container">Wedderheide</span>
-			<span class="header-title-container"> Paradise</span>
+			<span class="header-title-container-2"> Paradise</span>
 		</h1>
 	</div>
 {% endblock %}
 
 {% block pageContent %}
-	<section id="about page-section">
+	<section id="about" class="page-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
@@ -45,11 +45,15 @@
 	</section>
 
 	<section id="route" class="bg-faded page-section">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
-
+				<div class="col-lg-8 offset-lg-2">
+					<h2>{{ 'home.content.title.route'|trans }}</h2>
+					{% image '@AppBundle/Resources/public/images/development/mapPlaceholder.png' %}
+					<img src="{{ asset_url }}" alt="Example"/>
+					{% endimage %}
+				</div>
 			</div>
-		</div>
 		</div>
 	</section>
 

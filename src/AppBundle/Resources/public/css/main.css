@@ -6898,7 +6898,7 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   padding-top: 50px; }
 
 .header-title {
-  background: url(https://www.trestlewood.com/image/780a/29609/BlogDateBoard.png) no-repeat;
+  background: url(../images/elements/wooden_plank_1.png) no-repeat;
   background-size: 100% 120%;
   display: inline-block;
   padding: 225px 80px 20px;
@@ -6916,8 +6916,10 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
     background-size: cover;
     -webkit-text-fill-color: rgba(0, 0, 0, 0.8);
     -webkit-background-clip: text; }
-    .header-title .header-title-container:first-child {
-      font-size: 1.2em; }
+
+.page-section {
+  margin-top: 100px;
+  margin-bottom: 50px; }
 
 /* This file contains the styles of all the navigation elements of the website. */
 /**
