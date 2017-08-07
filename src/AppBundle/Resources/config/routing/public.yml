@@ -2,7 +2,7 @@
 # Created: 05-08-2017 06:58
 # Licence: GPLv3 - General Public Licence version 3
 
-############################################################################################[ Home Routes]
+#########################################################################################################[ Home Routes]
 # This route leads to the home page welcome fragment.
 default:
     path: /
@@ -26,7 +26,7 @@ contact:
     defaults:
         _controller: 'AppBundle:Home:home'
         _fragment: contact
-############################################################################################[ Edition Routes ]
+#####################################################################################################[ Edition Routes ]
 # This route leads to an events index page where you can select the year you want to see.
 editions:
     path: /editions
@@ -39,7 +39,7 @@ edition:
     defaults:
         _controller: 'AppBundle:Home:home'
 
-############################################################################################[ Band Routes ]
+########################################################################################################[ Band Routes ]
 # This route leads to the bands index page.
 bands:
     path: /bands
@@ -52,6 +52,7 @@ band:
     defaults:
         _controller: 'AppBundle:Home:home'
 
+############################################################################[ Authentication and authorization Routes ]
 # This route leads to the login page for.
 login:
     path: /login

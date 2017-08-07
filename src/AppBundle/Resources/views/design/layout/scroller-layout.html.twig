@@ -4,29 +4,37 @@
  # Licence: GPLv3 - General Public Licence version 3
  #}
 
-{{ pageNavigation }}
+{% extends '@App/design/base.html.twig' %}
 
-<header class="container-fluid header-standard section">
-	{% block pageHeaderTitleHolder %}
-		<div class="row">
-			<h1 class="{{ titleClass }}">
-				{{ pageHeaderTitle }}
-			</h1>
+{# Implement an page layout defined in the base file. #}
+{% block layout %}
+
+	{# Define where the  #}
+	{% embed '@App/design/modules/scroller-navigation.html.twig' %}
+	{% endembed %}
+
+	<header class="container-fluid header-standard section">
+		{% block pageHeaderTitleHolder %}
+			<div class="row">
+				<h1 class="{{ titleClass }}">
+					{{ pageHeaderTitle }}
+				</h1>
+			</div>
+		{% endblock pageHeaderTitleHolder %}
+	</header>
+
+	{# The main content of the webpage.#}
+	<main id="main-wrapper" class="container-fluid">
+		{% block pageContent %}{% endblock %}
+	</main>
+
+	{# The footer of the webpage. #}
+	<footer class="py-5 bg-inverse">
+		<div class="container">
+			{% block pageFooter %}
+				<p class="m-0 text-center text-white">Copyright &copy; Joris Rietveld 2017</p>
+			{% endblock pageFooter %}
 		</div>
-	{% endblock %}
-</header>
+	</footer>
 
-{# The main content of the webpage.#}
-<main id="main-wrapper" class="container-fluid">
-	{% block pageContent %}
-	{% endblock %}
-</main>
-
-{# The footer of the webpage. #}
-<footer class="py-5 bg-inverse">
-	<div class="container">
-		{% block pageFooter %}
-		<p class="m-0 text-center text-white">Copyright &copy; Joris Rietveld 2017</p>
-		{% endblock %}
-	</div>
-</footer>
+{% endblock layout %}

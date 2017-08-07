@@ -5,24 +5,32 @@
  #}
 
 {# This macro renders an item for an horizontal menu item #}
-{% macro menuItem( routeName,  text, isMainItem ) %}
+{% macro menuItem( routeKey, displayText, isMainItem ) %}
 	<li>
-		<a class="nav-link {{ isMainItem ? 'text-white' }}" data-menuanchor="home-anchor" href="{{ path(link.path) }}#page-top">{{ link.text|trans }}</a>
+		<a class="nav-link {{ isMainItem ? 'text-white' }}"
+		   href="{{ path( routeKey ) }}#page-top">{{ displayText|trans }}</a>
 	</li>
 {% endmacro %}
 
-{% macro menuItems( links ) %}
-	{% import _self as generators %}
-	{% for link in links %}
-		{{ generators.generateMenuItem( link.path, link.text, link.isMainItem ) }}
+{# This macro rendes menu items based on an multidimentional array with structure: $routeKey => [ displayText => $translationKey, isMainItem => $boolean ]] #}
+{% macro menuItems( menuLinks ) %}
+	{% import _self as generate %}
+	{% for routeKey, link in menuLinks %}
+		{{ profiler_dump( routeKey ) }}
+		{{ generate.menuItem( routeKey, link.displayText, link.isMainItem ) }}
 	{% endfor %}
 {% endmacro %}
 
-{% macro localizationButtons( locales ) %}
-	{% import _self as generators %}
-	{% for locale in locales %}
+{# This macro simplyfies the path( route, options ) function so you can call it like locPath( someRoute, 'nl' #}
+{% macro locPath( route, locale, options ) %}
+	{{ path( route, options|merge( locale ? {"_locale": locale } : {} )) }}
+{% endmacro %}
+
+{# This macro renders the cheance localization buttons based on localization settings defined in app/config.ymo under the paramethers key #}
+{% macro localizationButtons( context ) %}
+	{% for locale in context.locales %}
 		<a class="btn btn-lg flag-icon-background m-1 btn-language flag-icon-{{ locale == 'en' ? 'gb' : locale }}"
-		   href="{{ path(app.request.attributes.get("_route"), app.request.query.all|merge({"_locale": locale})) }}">
+		   href="{{ path( context.app.request.attributes.get("_route"), context.app.request.query.all|merge({"_locale": locale})) }}">
 		</a>
 	{% endfor %}
 {% endmacro %}

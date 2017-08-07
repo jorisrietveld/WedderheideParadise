@@ -4,66 +4,38 @@
  # Licence: GPLv3 - General Public Licence version 3
  #}
 
-{% import '@App/macros/generators.html.twig' as generate %}
-
-{% set menuItems = {
-default: { routeName: "navigation.home.title", isMainItem: 1 },
-default: { routeName: "navigation.home.title", isMainItem: 1 },
-default: { routeName: "navigation.home.title", isMainItem: 1 },
-default: { routeName: "navigation.home.title", isMainItem: 1 },
-editions: { routeName: "navigation.home.title", isMainItem: 1 },
-bands: { routeName: "navigation.home.title", isMainItem: 1 },
-
+{# This array contains the information needed to render the menu links in the top menu #}
+{% set menuItemData = {
+	default: { displayText: "navigation.home.title", isMainItem: 1 },
+	about: { displayText: "navigation.home.submenu.about", isMainItem: 0 },
+	route: { displayText: "navigation.home.submenu.route", isMainItem: 0 },
+	contact: { displayText: "navigation.home.submenu.contact", isMainItem: 0 },
+	editions: { displayText: "navigation.editions.title", isMainItem: 1 },
+	bands: { displayText: "navigation.bands.title", isMainItem: 1 },
 } %}
 
 <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+
+	{# Button for expanding the menu on small devices #}
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 	        data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false"
 	        aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
+
+	{# The items rendered in the menu #}
 	<div class="container">
 		<div class="collapse navbar-collapse" id="navbarExample">
 			<ul class="navbar-nav mr-auto">
-				{% block topMenuItems %}
-				{{ generate.menuItems([
-				[ 'default' => 'navigation.home.title', 1 ]
-				'' => 'navigation.editions.title',
-				'bands' => 'navigation.bands.title',
-				]) }}
-				<li>
-					<a class="nav-link text-white"
-					   href="{{ path('default') }}#page-top">{{ 'navigation.home.title'|trans }}</a>
-				</li>
-
-
-				<li class="nav-item">
-					<a class="nav-link text-white"
-					   href="{{ path('default') }}">{{ 'navigation.editions.title'|trans }}</a>
-				</li>
-				{% block navigraionEditionsSubmenu %}
-				{% endblock %}
-
-				<li class="nav-item">
-					<a class="nav-link text-white"
-					   href="{{ path('default') }}">{{ 'navigation.bands.title'|trans }}</a>
-				</li>
-				{% block navigationBandsSubmenu %}
-				{% endblock %}
-				{% block topMenuItems %}
+				{% import '@App/macros/generators.html.twig' as generate %}
+				{# Render the menu items based on the data at the top of the page. #}
+				{{ generate.menuItems( menuItemData ) }}
 			</ul>
 
 			<div class="navbar-nav">
-
-				{# Language switcher #}
-				{% for locale in locales %}
-					<a class="btn btn-lg flag-icon-background flag-icon-{{ locale == 'en' ? 'gb' : locale }} m-1 btn-language"
-					   href="{{ path(app.request.attributes.get("_route"), app.request.query.all|merge({"_locale": locale})) }}">
-					</a>
-				{% endfor %}
-
-				<a class="btn m-1 btn-info"
-				   href="{{ path('login') }}">{{ 'navigation.autentication.login.button'|trans }}</a>
+				{# Render the localization switch links based on the current route and the configured localizations in app/config.yml. #}
+				{{ generate.localizationButtons( _context ) }}
+				<a class="btn m-1 btn-info" href="{{ path('login') }}">{{ 'navigation.autentication.login.button'|trans }}</a>
 			</div>
 		</div>
 	</div>

@@ -3,6 +3,7 @@
  # Created: 15-07-2017 16:48
  # Licence: GPLv3 - General Public Licence version 3
  #}
+{#
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
 <head>
@@ -18,7 +19,9 @@
 	<meta name="revisit-after" content="{% block metaRevisit %}3 days{% endblock %}">
 	<title>{% block pageTitle %}{{ 'metatags.titles.default'|trans }}{% endblock %}</title>
 
-	{# Include and minify the cascading style sheeds. #}
+	#}
+{# Include and minify the cascading style sheeds. #}{#
+
 	{% block stylesheets %}
 		{% stylesheets
 		'third-party/font-awesome/css/font-awesome.min.css'
@@ -34,7 +37,9 @@
 	{% endblock %}
 </head>
 <body id="page-top">
-{# The top navigation menu of the webpage. #}
+#}
+{# The top navigation menu of the webpage. #}{#
+
 {% block navigationBar %}
 	<!-- Navigation -->
 
@@ -43,7 +48,9 @@
 {% embed '@App/template-components/header.html.twig' %}
 	{% block %}
 {% endembed %}
-{# The header of the webpage. #}
+#}
+{# The header of the webpage. #}{#
+
 {% block pageHeader %}
 	<header class="container-fluid header-standard section">
 		{% block pageHeaderTitleHolder %}
@@ -57,12 +64,16 @@
 {% endblock pageHeader %}
 
 <main id="main-wrapper" class="container-fluid">
-{# The main content of the webpage.#}
+#}
+{# The main content of the webpage.#}{#
+
 {% block pageContent %}
 {% endblock %}
 </main>
 
-{# The footer of the webpage. #}
+#}
+{# The footer of the webpage. #}{#
+
 {% block pageFooter %}
 	<!-- Footer -->
 	<footer class="py-5 bg-inverse">
@@ -73,7 +84,9 @@
 	</footer>
 {% endblock %}
 
-{# Load the javasripts at the botom of the page to improve the load speed. #}
+#}
+{# Load the javasripts at the botom of the page to improve the load speed. #}{#
+
 {% block javascripts %}
 	{% javascripts
 	'third-party/jquery/dist/jquery.min.js'
@@ -88,3 +101,4 @@
 {% endblock %}
 </body>
 </html>
+#}

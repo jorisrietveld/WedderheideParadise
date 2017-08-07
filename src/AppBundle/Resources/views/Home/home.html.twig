@@ -7,26 +7,6 @@
 
 {% block title %}AppBundle:Home:home{% endblock %}
 
-{% set scrollerNavigation %}
-	{% embed '@App/design/modules/scroller-navigation.html.twig' %}
-
-	{% endembed %}
-{% endset %}
-
-{% block navigationHomeSubmenu %}
-	<li class="nav-item">
-		<a class="nav-link" href="{{ path('default') }}#about">{{ 'navigation.home.submenu.about'|trans }}</a>
-	</li>
-
-	<li class="nav-item">
-		<a class="nav-link" href="{{ path('default') }}#route">{{ 'navigation.home.submenu.route'|trans }}</a>
-	</li>
-
-	<li class="nav-item">
-		<a class="nav-link" href="{{ path('default') }}#contact">{{ 'navigation.home.submenu.contact'|trans }}</a>
-	</li>
-{% endblock %}
-
 {% block pageHeaderTitleHolder %}
 	<div class="">
 		<h1 class="row header-title">
@@ -37,14 +17,39 @@
 {% endblock %}
 
 {% block pageContent %}
-	<section id="about" class="page-section mt-2 section">
+	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'about', 'sectionTitleKey': 'home.content.title.about' } %}
+		{% block sectionContent %}
+			<p>
+				{{ 'home.content.text.about'|trans }}
+			</p>
+		{% endblock %}
+	{% endembed %}
+
+	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'route', 'sectionTitleKey': 'home.content.title.route' } %}
+		{% block sectionContent %}
+			{% image '@AppBundle/Resources/public/images/development/mapPlaceholder.png' %}
+			<img src="{{ asset_url }}" alt="Example"/>
+			{% endimage %}
+		{% endblock %}
+	{% endembed %}
+
+	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'about', 'sectionTitleKey': 'home.content.title.about' } %}
+		{% block sectionContent %}
+			{{ form_start(contactForm) }}
+			{{ form_widget( contactForm ) }}
+			<button type="submit"
+			        class="btn btn-info col-12">{{ 'home.content.form.contact.send'|trans }}</button>
+			{{ form_end(contactForm ) }}
+		{% endblock %}
+	{% endembed %}
+
+
+	{#<section id="about" class="page-section mt-2 section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
 					<h1>{{ 'home.content.title.about'|trans }}</h1>
-					<p>
-						{{ 'home.content.text.about'|trans }}
-					</p>
+
 				</div>
 			</div>
 		</div>
@@ -76,7 +81,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>#}
 {% endblock %}
 
 {% block javascripts %}
