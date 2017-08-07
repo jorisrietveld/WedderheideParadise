@@ -19,7 +19,8 @@
 
 /* Import the Bootstrap library because I am an lazy person and it gives me the feeling
    that I can still write code when I drunk.  */
-@import "../../../../../web/third-party/bootstrap/scss/bootstrap";
+@import "../../../../../web/third-party/bootstrap/scss/variables";
+@import "../../../../../web/third-party/bootstrap/scss/bootstrap-grid";
 
 /* Import the Flag-icon library for painting localization buttons */
 /*@import "../../../../../web/third-party/flag-icon-css/sass/flag-icon";*/

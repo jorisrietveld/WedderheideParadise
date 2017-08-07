@@ -1,0 +1,55 @@
+{#
+ # Author: Joris Rietveld <jorisrietveld@gmail.com>
+ # Created: 06-08-2017 21:55
+ # Licence: GPLv3 - General Public Licence version 3
+ #}
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+	<meta charset="{% block metaCharset %}utf-8{% endblock %}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description"
+	      content="{% block metaPageDescription %}{{ 'metatags.descriptions.home'|trans }}{% endblock %}">
+	<meta name="keywords"
+	      content="{% block metaKeywords %}{{ 'metatags.keywords.default'|trans }}{% endblock %}">
+	<meta name="author" content="{% block metaAuthor %}Joris Rietveld{% endblock %}">
+	<meta name="robots" content="{% block metaRobots %}index, follow{% endblock %}">
+	<meta name="revisit-after" content="{% block metaRevisit %}3 days{% endblock %}">
+	<title>{% block pageTitle %}{{ 'metatags.titles.default'|trans }}{% endblock %}</title>
+
+	{# Include and minify the cascading style sheeds. #}
+	{% block stylesheets %}
+		{% stylesheets
+		'third-party/font-awesome/css/font-awesome.min.css'
+		'third-party/tether/dist/css/tether.min.css'
+		'third-party/bootstrap/dist/css/bootstrap.min.css'
+		'third-party/flag-icon-css/css/flag-icon.min.css'
+		'third-party/fullpage.js/dist/jquery.fullpage.min.css'
+		'bundles/app/css/main.css'
+		filter='cssrewrite' %}
+		<link rel="stylesheet" href="{{ asset_url }}">
+		{% endstylesheets %}
+
+	{% endblock %}
+</head>
+<body id="page-top" class="{% block bodyClasses %}{% endblock %}">
+
+{# In this block the page layout will be rendered. #}
+{% block layout %}{% endblock %}
+
+{# Load the javasripts at the botom of the page to improve the load speed. #}
+{% block javascripts %}
+	{% javascripts
+	'third-party/jquery/dist/jquery.min.js'
+	'third-party/tether/dist/js/tether.min.js'
+	'third-party/jquery.easing/js/jquery.easing.min.js'
+	'third-party/bootstrap/dist/js/bootstrap.min.js'
+	'third-party/fullpage.js/dist/jquery.fullpage.min.js'
+	'@AppBundle/Resources/public/js/main.js'
+	output='js/main.js' %}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
+</body>
+</html>

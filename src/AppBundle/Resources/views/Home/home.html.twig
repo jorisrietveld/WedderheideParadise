@@ -3,9 +3,15 @@
  # Created: 16-07-2017 12:58
  # Licence: GPLv3 - General Public Licence version 3
  #}
-{% extends "@App/template.html.twig" %}
+{% extends "@App/design/layout/scroller-layout.html.twig" %}
 
 {% block title %}AppBundle:Home:home{% endblock %}
+
+{% set scrollerNavigation %}
+	{% embed '@App/design/modules/scroller-navigation.html.twig' %}
+
+	{% endembed %}
+{% endset %}
 
 {% block navigationHomeSubmenu %}
 	<li class="nav-item">
@@ -22,20 +28,20 @@
 {% endblock %}
 
 {% block pageHeaderTitleHolder %}
-	<div class="container-fluid">
-		<h1 class="header-title">
-			<span class="header-title-container">Wedderheide</span>
-			<span class="header-title-container-2"> Paradise</span>
+	<div class="">
+		<h1 class="row header-title">
+			<span class="col-lg-12 header-title-container">Wedderheide</span>
+			<span class="col-lg-12 header-title-container"> Paradise</span>
 		</h1>
 	</div>
 {% endblock %}
 
 {% block pageContent %}
-	<section id="about" class="page-section">
+	<section id="about" class="page-section mt-2 section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
-					<h2>{{ 'home.content.title.about'|trans }}</h2>
+					<h1>{{ 'home.content.title.about'|trans }}</h1>
 					<p>
 						{{ 'home.content.text.about'|trans }}
 					</p>
@@ -44,7 +50,7 @@
 		</div>
 	</section>
 
-	<section id="route" class="bg-faded page-section">
+	<section id="route" class="bg-faded page-section section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
@@ -57,7 +63,7 @@
 		</div>
 	</section>
 
-	<section id="contact" class="page-section">
+	<section id="contact" class="page-section section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
@@ -71,4 +77,8 @@
 			</div>
 		</div>
 	</section>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
 {% endblock %}

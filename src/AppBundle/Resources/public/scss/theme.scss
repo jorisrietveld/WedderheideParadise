@@ -5,7 +5,6 @@
  */
 
 @import "variables";
-@import "fonts";
 
 .title-font{
 	font-family: TitleFont sans-serif;
@@ -28,13 +27,13 @@
 	background-size: 100% 120%;
 
 	display:inline-block;
-	padding: 225px 80px 20px;
-	width: 95vw;
-	height: 85vh;
+	padding: 7% 80px 20px;
+	/*width: 95vw;
+	height: 85vh;*/
 	overflow: visible;
 
 	font-family: 'Galindo', cursive bold;
-	font-size: 10em;
+	font-size: 9rem;
 	text-align: center;
 
 	& .header-title-container{
@@ -43,15 +42,13 @@
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
+		color: $darkTransparent;
 		-webkit-text-fill-color: $darkTransparent;
 		-webkit-background-clip: text;
-		&:first-child{
-			//font-size: 1.2em;
-		}
 	}
 }
 
 .page-section{
-	margin-top: 100px;
-	margin-bottom: 50px;
+	height: 100vh;
+	padding-top: 50px;
 }

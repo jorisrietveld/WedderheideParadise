@@ -1,0 +1,32 @@
+{#
+ # Author: Joris Rietveld <jorisrietveld@gmail.com>
+ # Created: 06-08-2017 22:05
+ # Licence: GPLv3 - General Public Licence version 3
+ #}
+
+{{ pageNavigation }}
+
+<header class="container-fluid header-standard section">
+	{% block pageHeaderTitleHolder %}
+		<div class="row">
+			<h1 class="{{ titleClass }}">
+				{{ pageHeaderTitle }}
+			</h1>
+		</div>
+	{% endblock %}
+</header>
+
+{# The main content of the webpage.#}
+<main id="main-wrapper" class="container-fluid">
+	{% block pageContent %}
+	{% endblock %}
+</main>
+
+{# The footer of the webpage. #}
+<footer class="py-5 bg-inverse">
+	<div class="container">
+		{% block pageFooter %}
+		<p class="m-0 text-center text-white">Copyright &copy; Joris Rietveld 2017</p>
+		{% endblock %}
+	</div>
+</footer>

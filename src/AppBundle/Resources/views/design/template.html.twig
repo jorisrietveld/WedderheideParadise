@@ -25,6 +25,7 @@
 		'third-party/tether/dist/css/tether.min.css'
 		'third-party/bootstrap/dist/css/bootstrap.min.css'
 		'third-party/flag-icon-css/css/flag-icon.min.css'
+		'third-party/fullpage.js/dist/jquery.fullpage.min.css'
 		'bundles/app/css/main.css'
 		filter='cssrewrite' %}
 		<link rel="stylesheet" href="{{ asset_url }}">
@@ -36,75 +37,30 @@
 {# The top navigation menu of the webpage. #}
 {% block navigationBar %}
 	<!-- Navigation -->
-	<nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-		        data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false"
-		        aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="container">
-			<div class="collapse navbar-collapse" id="navbarExample">
-				<ul class="navbar-nav mr-auto">
-					<li>
-						<a class="nav-link text-white"
-						   href="{{ path('default') }}#page-top">{{ 'navigation.home.title'|trans }}</a>
-					</li>
-					{% block navigationHomeSubmenu %}
-					{% endblock %}
 
-					<li class="nav-item">
-						<a class="nav-link text-white"
-						   href="{{ path('default') }}">{{ 'navigation.editions.title'|trans }}</a>
-					</li>
-					{% block navigraionEditionsSubmenu %}
-					{% endblock %}
-
-					<li class="nav-item">
-						<a class="nav-link text-white"
-						   href="{{ path('default') }}">{{ 'navigation.bands.title'|trans }}</a>
-					</li>
-					{% block navigationBandsSubmenu %}
-					{% endblock %}
-				</ul>
-
-				<div class="navbar-nav">
-
-					{# Language switcher #}
-					{% for locale in locales %}
-						<a class="btn btn-lg flag-icon-background flag-icon-{{ locale == 'en' ? 'gb' : locale }} m-1 btn-language"
-						   href="{{ path(app.request.attributes.get("_route"), app.request.query.all|merge({"_locale": locale})) }}">
-						</a>
-					{% endfor %}
-
-					<a class="btn m-1 btn-info"
-					   href="{{ path('login') }}">{{ 'navigation.autentication.login.button'|trans }}</a>
-				</div>
-			</div>
-		</div>
-	</nav>
 {% endblock %}
 
-
+{% embed '@App/template-components/header.html.twig' %}
+	{% block %}
+{% endembed %}
 {# The header of the webpage. #}
 {% block pageHeader %}
-	<header class="header-standard">
+	<header class="container-fluid header-standard section">
 		{% block pageHeaderTitleHolder %}
-			<div class="container">
+			<div class="row">
 				<h1 class="title-font">
 					{% block pageHeaderTitle %}	{{ 'home.header.title'|trans }}	{% endblock %}
 				</h1>
-				{% block pageHeaderSubtitle %}
-				{% endblock %}
 			</div>
 		{% endblock %}
 	</header>
 {% endblock pageHeader %}
 
-
+<main id="main-wrapper" class="container-fluid">
 {# The main content of the webpage.#}
 {% block pageContent %}
 {% endblock %}
-
+</main>
 
 {# The footer of the webpage. #}
 {% block pageFooter %}
@@ -124,7 +80,8 @@
 	'third-party/tether/dist/js/tether.min.js'
 	'third-party/jquery.easing/js/jquery.easing.min.js'
 	'third-party/bootstrap/dist/js/bootstrap.min.js'
-	'@AppBundle/Resources/public/js/*'
+	'third-party/fullpage.js/dist/jquery.fullpage.min.js'
+	'@AppBundle/Resources/public/js/main.js'
 	output='js/main.js' %}
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
