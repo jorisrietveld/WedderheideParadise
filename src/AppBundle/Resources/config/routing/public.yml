@@ -8,18 +8,22 @@ default:
     path: /
     defaults:
         _controller: 'AppBundle:Home:home'
+        _fragment: 'page-top'
+
 # This route leads to the home page about fragment.
 about:
     path: /
     defaults:
         _controller: 'AppBundle:Home:home'
         _fragment: about
+
 # This route leads to the home page route fragment.
 route:
     path: /
     defaults:
         _controller: 'AppBundle:Home:home'
         _fragment: route
+
 # This route leads to the home page contact fragment.
 contact:
     path: /

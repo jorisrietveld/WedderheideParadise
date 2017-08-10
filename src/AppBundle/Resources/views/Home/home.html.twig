@@ -17,6 +17,15 @@
 {% endblock %}
 
 {% block pageContent %}
+	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'test', 'sectionTitleKey': 'home.content.title.about' } %}
+		{% block sectionContent %}
+			<p>
+				{{ dump( routes ) }}
+			</p>
+		{% endblock %}
+	{% endembed %}
+
+
 	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'about', 'sectionTitleKey': 'home.content.title.about' } %}
 		{% block sectionContent %}
 			<p>
@@ -33,7 +42,7 @@
 		{% endblock %}
 	{% endembed %}
 
-	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'about', 'sectionTitleKey': 'home.content.title.about' } %}
+	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'contact', 'sectionTitleKey': 'home.content.title.contact' } %}
 		{% block sectionContent %}
 			{{ form_start(contactForm) }}
 			{{ form_widget( contactForm ) }}

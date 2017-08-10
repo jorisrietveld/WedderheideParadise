@@ -3,7 +3,6 @@
  * Created: 16-07-2017 13:57
  * Licence: GPLv3 - General Pulbic Licence version 3
  */
-/*
 (function ($) {
 	"use strict"; // Start of use strict
 
@@ -33,6 +32,7 @@
 	});
 
 })(jQuery); // End of use strict
+/*
 
 var current_section = 1;
 $(window).mousewheel(function (event, delta) {
@@ -53,4 +53,5 @@ $(window).mousewheel(function (event, delta) {
 $('body, html').scroll(function () {
 	return false;
 }); // allow no scrolling
+
 */

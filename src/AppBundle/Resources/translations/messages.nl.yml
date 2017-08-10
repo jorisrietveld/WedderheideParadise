@@ -16,7 +16,7 @@ navigation:
     home:
         title: 'Home'
         submenu:
-            about: 'Over de wedderheide party'
+            about: 'Wedderheide Party'
             route: 'Route'
             contact: 'Contact'
     editions:

@@ -26,7 +26,7 @@ class ContactType extends AbstractType
 	{
 		$builder
 			->add( 'name', TextType::class, [
-				'attr'  => [ 'autofocus' => true ],
+			/*	'attr'  => [ 'autofocus' => true ],*/
 				'label' => 'home.content.form.contact.name',
 			] )
 			->add( 'subject', TextType::class, [

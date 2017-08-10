@@ -8,7 +8,7 @@
 {% macro menuItem( routeKey, displayText, isMainItem ) %}
 	<li>
 		<a class="nav-link {{ isMainItem ? 'text-white' }}"
-		   href="{{ path( routeKey ) }}#page-top">{{ displayText|trans }}</a>
+		   href="{{ path( routeKey ) }}">{{ displayText|trans }}</a>
 	</li>
 {% endmacro %}
 
@@ -16,7 +16,6 @@
 {% macro menuItems( menuLinks ) %}
 	{% import _self as generate %}
 	{% for routeKey, link in menuLinks %}
-		{{ profiler_dump( routeKey ) }}
 		{{ generate.menuItem( routeKey, link.displayText, link.isMainItem ) }}
 	{% endfor %}
 {% endmacro %}

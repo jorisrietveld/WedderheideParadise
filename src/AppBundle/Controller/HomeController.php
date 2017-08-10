@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Contact;
 use AppBundle\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Service\menuGenerator;
 
 class HomeController extends Controller
 {
@@ -18,7 +19,8 @@ class HomeController extends Controller
 		$form = $this->createForm(ContactType::class );
 
 		return $this->render( 'AppBundle:Home:home.html.twig', [
-			'contactForm' => $form->createView()
+			'contactForm' => $form->createView(),
+		    'routes' => $this->get( menuGenerator::class )->getRoutes()
 		] );
 	}
 
