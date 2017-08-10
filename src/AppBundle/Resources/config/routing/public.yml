@@ -10,75 +10,79 @@ default:
         _controller: 'AppBundle:Home:home'
         _fragment: 'page-top'
         linkTranslationKey: 'navigation.home.title'
-        isMain: 'true'
 
 # This route leads to the home page about fragment.
 about:
-    path: /
+    path: '/'
     defaults:
         _controller: 'AppBundle:Home:home'
-        _fragment: about
+        _fragment: 'about'
         linkTranslationKey: 'navigation.home.submenu.about'
+        parent: 'default'
 
 # This route leads to the home page route fragment.
 route:
-    path: /
+    path: '/'
     defaults:
         _controller: 'AppBundle:Home:home'
-        _fragment: route
+        _fragment: 'route'
         linkTranslationKey: 'navigation.home.submenu.route'
+        parent: 'default'
 
 # This route leads to the home page contact fragment.
 contact:
-    path: /
+    path: '/'
     defaults:
         _controller: 'AppBundle:Home:home'
-        _fragment: contact
+        _fragment: 'contact'
         linkTranslationKey: 'navigation.home.submenu.contact'
+        parent: 'default'
 
 #####################################################################################################[ Edition Routes ]
 # This route leads to an events index page where you can select the year you want to see.
 editions:
-    path: /editions
+    path: '/editions'
     defaults:
         _controller: 'AppBundle:Home:home'
-        linkTranslationKey: 'navigation.edition.title'
-        isMain: 'true'
+        linkTranslationKey: 'navigation.editions.title'
 
 # This route leads to an individual event index page by year.
 edition:
-    path: /edition/{year}
+    path: '/edition/{year}'
     defaults:
         _controller: 'AppBundle:Home:home'
         linkTranslationKey: 'navigation.edition.title'
+        parent: 'editions'
+        year: 'default'
 
 ########################################################################################################[ Band Routes ]
 # This route leads to the bands index page.
 bands:
-    path: /bands
+    path: '/bands'
     defaults:
         _controller: 'AppBundle:Home:home'
         linkTranslationKey: 'navigation.bands.title'
-        isMain: 'true'
 
 # This route leads to an individual band that played at wedderheide.
 band:
-    path: /band/{year}
+    path: '/band/{name}'
     defaults:
         _controller: 'AppBundle:Home:home'
         linkTranslationKey: 'navigation.bands.title'
+        parent: 'bands'
+        name: 'default'
 
 ############################################################################[ Authentication and authorization Routes ]
 # This route leads to the login page for.
 login:
-    path: /login
+    path: '/login'
     defaults:
         _controller: 'AppBundle:Authentication:login'
         linkTranslationKey: ''
 
 # This route leads to the registration page.
 register:
-    path: /register
+    path: '/register'
     defaults:
         _controller: 'AppBundle:Authentication:register'
         linkTranslationKey: ''

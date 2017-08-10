@@ -12,7 +12,8 @@ use \Symfony\Component\Routing\RouteCollection;
 use \Symfony\Component\Routing\RouterInterface;
 use \Symfony\Component\Routing\Route;
 use \Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser;
-use Symfony\Component\HttpFoundation\RequestStack;
+use \Symfony\Component\HttpFoundation\RequestStack;
+use \Symfony\Component\Templating\EngineInterface;
 
 class menuGenerator
 {
@@ -20,6 +21,7 @@ class menuGenerator
 	private $entityManager;
 	private $controllerNameParer;
 	private $requestStack;
+	private $twig;
 	private $excludeRoutePrefix = [
 		'_',
 	];
@@ -28,12 +30,13 @@ class menuGenerator
 		'AppBundle:Home:home',
 	];
 
-	public function __construct( RouterInterface $router, EntityManagerInterface $entityManager, ControllerNameParser $controllerNameParser, RequestStack $requestStack )
+	public function __construct( RouterInterface $router, EntityManagerInterface $entityManager, ControllerNameParser $controllerNameParser, RequestStack $requestStack, EngineInterface $twig )
 	{
 		$this->router = $router;
 		$this->entityManager = $entityManager;
 		$this->controllerNameParer = $controllerNameParser;
 		$this->requestStack = $requestStack;
+		$this->twig = $twig;
 	}
 
 	public function getRoutesForMenu()
@@ -48,14 +51,95 @@ class menuGenerator
 		return $this->filterRoutes( $routes );
 	}
 
-	public function renderMenu()
+	private function renderMenuItem( array $contextVars = [] )
 	{
-
+		return $this->twig->render( '@App/design/modules/scroller-navigation-link.html.twig', $contextVars );
 	}
+
+	public function renderMenu( array $slugs = [] )
+	{
+		$output = '';
+
+		foreach ( $this->getRoutesForMenu() as $routeName => $route )
+		{
+			if( $route->hasDefault('parent') && $route->getDefault('parent') == $this->requestStack->getCurrentRequest()->get('_route') )
+			{
+				$output .= $this->renderMenuItem([
+					'pathName' => $routeName,
+				    'linkTranslationKey' => $route->getDefault('linkTranslationKey'),
+				    'slugs' => $slugs
+				]);
+			}
+			elseif( !$route->hasDefault('parent') )
+			{
+				$output .= $this->renderMenuItem([
+					'addClass' => 'text-white',
+					'pathName' => $routeName,
+					'linkTranslationKey' => $route->getDefault('linkTranslationKey'),
+				]);
+			}
+			else{
+
+			}
+		}
+
+		return $output;
+	}
+	/*
+		private function isRouteWithArgs( string $path )
+		{
+			return count( explode( '{', $path ) ) > 1 ? true : false;
+		}
+
+		private function sortItems( RouteCollection $routeCollection, string $currentRoute )
+		{
+			$categories = [];
+
+			foreach ( $routeCollection as $routeName => $route )
+			{
+				$categoryToUse = null;
+
+				if ( array_key_exists( $route->getPath(), $categories ) )
+				{
+					if ( $route->hasDefault( 'isMain' ) )
+					{
+						$categories[$route->getPath()]->addMainItem( $route );
+						$categories[$route->getPath()]->addRouteName( $route );
+
+					}
+					elseif ( $route->getPath() == $currentRoute )
+					{
+						$categories[$route->getPath()]->addSubmenuItem( $route );
+					}
+				}
+				elseif( !$this->isRouteWithArgs( $route->getPath() ) )
+				{
+					$categories[$route->getPath()] = new MenuCategory( $route->getPath() );
+
+					if ( $route->hasDefault( 'isMain' ) )
+					{
+						$categories[$route->getPath()]->addMainItem( $route );
+					}
+					elseif ( $route->getPath() == $currentRoute )
+					{
+						$categories[$route->getPath()]->addSubmenuItem( $route );
+					}
+				}
+			}
+
+			return $categories;
+		}*/
+
+	/*public function renderMenu()
+	{
+		$sortedRoutes = $this->sortItems( $this->getRoutesForMenu(), $this->requestStack->getCurrentRequest()->getPathInfo() );
+
+		return $sortedRoutes;
+	}*/
 
 	private function isNotForCurrentLocale( string $routeName )
 	{
-		return $routeName[0].$routeName[1] == $this->requestStack->getCurrentRequest()->getLocale() ? false: true;
+		return $routeName[0] . $routeName[1] == $this->requestStack->getCurrentRequest()->getLocale() ? false : true;
 	}
 
 	private function isNotAppRoute( string $routeName )
@@ -65,7 +149,7 @@ class menuGenerator
 
 	private function isControllerInMenu( string $routeName, Route $route )
 	{
-		return in_array( $route->getDefault('_controller' ), $this->publicMenuAllowedControllers ) ? false : true;
+		return in_array( $route->getDefault( '_controller' ), $this->publicMenuAllowedControllers ) ? false : true;
 	}
 
 	protected function filterRoutes( RouteCollection $routeCollection )
@@ -74,15 +158,17 @@ class menuGenerator
 
 		foreach ( $routeCollection as $routeName => $route )
 		{
-			if( $this->isControllerInMenu( $routeName, $route ) ||
-				$this->isNotAppRoute( $routeName) ||
+			if ( $this->isControllerInMenu( $routeName, $route ) ||
+				$this->isNotAppRoute( $routeName ) ||
 				$this->isNotForCurrentLocale( $routeName )
-			){
+			)
+			{
 				$routesToRemove[] = $routeName;
 			}
 		}
 
 		$routeCollection->remove( $routesToRemove );
+
 		return $routeCollection;
 	}
 

@@ -3,16 +3,7 @@
  # Created: 06-08-2017 22:45
  # Licence: GPLv3 - General Public Licence version 3
  #}
-
-{# This array contains the information needed to render the menu links in the top menu #}
-{% set menuItemData = {
-	default: { displayText: "navigation.home.title", isMainItem: 1 },
-	about: { displayText: "navigation.home.submenu.about", isMainItem: 0 },
-	route: { displayText: "navigation.home.submenu.route", isMainItem: 0 },
-	contact: { displayText: "navigation.home.submenu.contact", isMainItem: 0 },
-	editions: { displayText: "navigation.editions.title", isMainItem: 1 },
-	bands: { displayText: "navigation.bands.title", isMainItem: 1 },
-} %}
+{% import '@App/macros/generators.html.twig' as generate %}
 
 <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
 
@@ -27,9 +18,7 @@
 	<div class="container">
 		<div class="collapse navbar-collapse" id="navbarExample">
 			<ul class="navbar-nav mr-auto">
-				{% import '@App/macros/generators.html.twig' as generate %}
-				{# Render the menu items based on the data at the top of the page. #}
-				{{ generate.menuItems( menuItemData ) }}
+				{{ renderedMenuLinks|raw }}
 			</ul>
 
 			<div class="navbar-nav">
