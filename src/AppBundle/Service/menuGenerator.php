@@ -7,26 +7,36 @@
 
 namespace AppBundle\Service;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\RouteCollection;
+use \Doctrine\ORM\EntityManagerInterface;
+use \Symfony\Component\Routing\RouteCollection;
 use \Symfony\Component\Routing\RouterInterface;
 use \Symfony\Component\Routing\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser;
+use \Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class menuGenerator
 {
 	private $router;
 	private $entityManager;
 	private $controllerNameParer;
+	private $requestStack;
+	private $excludeRoutePrefix = [
+		'_',
+	];
 
-	public function __construct( RouterInterface $router, EntityManagerInterface $entityManager, ControllerNameParser $controllerNameParser )
+	private $publicMenuAllowedControllers = [
+		'AppBundle:Home:home',
+	];
+
+	public function __construct( RouterInterface $router, EntityManagerInterface $entityManager, ControllerNameParser $controllerNameParser, RequestStack $requestStack )
 	{
 		$this->router = $router;
 		$this->entityManager = $entityManager;
 		$this->controllerNameParer = $controllerNameParser;
+		$this->requestStack = $requestStack;
 	}
 
-	public function getRoutes()
+	public function getRoutesForMenu()
 	{
 		$routes = $this->router->getRouteCollection();
 
@@ -35,20 +45,40 @@ class menuGenerator
 			$this->convertController( $route );
 		}
 
-		return [
-			'routes' => $this->filterRoutes( $routes ),
-		];
+		return $this->filterRoutes( $routes );
 	}
 
-	protected function filterRoutes( RouteCollection $routeCollection, string $excludePattern = "_" )
+	public function renderMenu()
+	{
+
+	}
+
+	private function isNotForCurrentLocale( string $routeName )
+	{
+		return $routeName[0].$routeName[1] == $this->requestStack->getCurrentRequest()->getLocale() ? false: true;
+	}
+
+	private function isNotAppRoute( string $routeName )
+	{
+		return in_array( $routeName[0], $this->excludeRoutePrefix ) ? true : false;
+	}
+
+	private function isControllerInMenu( string $routeName, Route $route )
+	{
+		return in_array( $route->getDefault('_controller' ), $this->publicMenuAllowedControllers ) ? false : true;
+	}
+
+	protected function filterRoutes( RouteCollection $routeCollection )
 	{
 		$routesToRemove = [];
 
-		foreach ( $routeCollection as $item => $value )
+		foreach ( $routeCollection as $routeName => $route )
 		{
-			if( $item[0] == $excludePattern )
-			{
-				$routesToRemove[] = $item;
+			if( $this->isControllerInMenu( $routeName, $route ) ||
+				$this->isNotAppRoute( $routeName) ||
+				$this->isNotForCurrentLocale( $routeName )
+			){
+				$routesToRemove[] = $routeName;
 			}
 		}
 

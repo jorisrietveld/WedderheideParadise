@@ -20,7 +20,7 @@ class HomeController extends Controller
 
 		return $this->render( 'AppBundle:Home:home.html.twig', [
 			'contactForm' => $form->createView(),
-		    'routes' => $this->get( menuGenerator::class )->getRoutes()
+		    'routes' => $this->get( menuGenerator::class )->getRoutesForMenu()
 		] );
 	}
 
