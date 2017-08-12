@@ -1170,18 +1170,25 @@ html {
 .white-text {
   color: #FFFFFF; }
 
-.title-font {
-  font-family: TitleFont sans-serif;
-  font-size: 8em; }
-
-.header-standard {
+body {
   background: url(http://wedderheide.nl/highslide/images/large/philip4.JPG) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow-x: hidden; }
+
+.title-font {
+  font-family: TitleFont sans-serif;
+  font-size: 8em; }
+
+.header-standard {
+  /*	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;*/
   height: 200vh;
-  padding-top: 10%; }
+  padding-top: 5%; }
 
 .header-title {
   background: url(../images/elements/wooden_plank_1.png) no-repeat;
@@ -1206,7 +1213,31 @@ html {
 
 .page-section {
   height: 100vh;
-  padding-top: 50px; }
+  position: relative;
+  /* for child pseudo-element */
+  z-index: 0;
+  margin: 0 -600rem;
+  /* add back negative margin value */
+  padding-top: 4rem;
+  padding-right: 600rem;
+  padding-left: 600rem;
+  padding-bottom: 0.25rem;
+  background: #fafafa; }
+  .page-section::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    /* behind parent */
+    top: 0;
+    bottom: 0;
+    /* subtract h2 padding (1.5rem) */
+    left: 598.5rem;
+    right: 598.5rem;
+    background: white; }
+  .page-section:nth-child(odd) {
+    background: white; }
+    .page-section:nth-child(odd)::before {
+      background: #fafafa; }
 
 /* This file contains the styles of all the navigation elements of the website. */
 /**

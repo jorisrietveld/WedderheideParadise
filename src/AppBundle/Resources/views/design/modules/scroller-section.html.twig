@@ -5,10 +5,10 @@
  #}
 
 {# Module for the scroller layout that defines an new section on the page. #}
-<section id="{{ sectionId }}" class="page-section section {{ sectionClasses | default( [] ) | join(' ') }}">
-	<div class="container">
+<section id="{{ sectionId|default('') }}" class="page-section section {{ sectionClasses | default( [] ) | join(' ') }}">
+	<div class="">
 		<div class="row">
-			<div class="col-lg-8 offset-lg-2">
+			<div class="col-lg-12">
 				<h2>{{ sectionTitleKey|trans }}</h2>
 				{% block sectionContent %}
 				{% endblock %}

@@ -5,16 +5,18 @@
  #}
 {% extends "@App/design/layout/scroller-layout.html.twig" %}
 
-{% block title %}AppBundle:Home:home{% endblock %}
-
-{% block pageHeaderTitleHolder %}
-	<div class="">
-		<h1 class="row header-title">
-			<span class="col-lg-12 header-title-container">Wedderheide</span>
-			<span class="col-lg-12 header-title-container"> Paradise</span>
-		</h1>
-	</div>
-{% endblock %}
+{% block header %}
+	{% embed '@App/design/modules/scroller-header.html.twig' %}
+		{% block pageHeaderTitleHolder %}
+			<div class="">
+				<h1 class="row header-title">
+					<span class="col-lg-12 header-title-container">Wedderheide</span>
+					<span class="col-lg-12 header-title-container"> Paradise</span>
+				</h1>
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endblock header %}
 
 {% block pageContent %}
 
@@ -28,9 +30,9 @@
 
 	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'route', 'sectionTitleKey': 'home.content.title.route' } %}
 		{% block sectionContent %}
-			{% image '@AppBundle/Resources/public/images/development/mapPlaceholder.png' %}
-			<img src="{{ asset_url }}" alt="Example"/>
-			{% endimage %}
+			{#<div id="map"></div>#}
+			<h4>Wordt gemaakt...</h4>
+			<p>Deze functionalitijd zal binnenkort worden toegevoegd.</p>
 		{% endblock %}
 	{% endembed %}
 

@@ -1,0 +1,14 @@
+{% extends "@App/design/layout/scroller-layout.html.twig" %}
+
+{% block header %}
+	{% set pageHeaderTitle = 'Events' %}
+	{{ parent() }}
+{% endblock header %}
+
+{% block pageContent %}
+	<h1>Events page</h1>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}

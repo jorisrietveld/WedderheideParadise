@@ -1,0 +1,18 @@
+{% extends "@App/design/layout/scroller-layout.html.twig" %}
+
+{% block title %}event{% endblock %}
+
+{% block header %}
+	{% set appendHeaderClasses = '' %}
+	{% set titleClass = 'Event' %}
+	{% set pageHeaderTitle = '' %}
+	{{ parent() }}
+{% endblock header %}
+
+{% block pageContent %}
+	<h1>Event page 1</h1>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}

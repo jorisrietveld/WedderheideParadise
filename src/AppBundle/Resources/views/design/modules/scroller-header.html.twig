@@ -1,0 +1,19 @@
+{#
+ # Author: Joris Rietveld <jorisrietveld@gmail.com>
+ # Created: 12-08-2017 11:51
+ # Licence: GPLv3 - General Public Licence version 3
+ #}
+
+{# This block is part of the scroller layout, it holds the header element rendered at the top of the body. #}
+<header id="page-top" class="{% block headerClasses %}container-fluid header-standard section {% endblock %}">
+	{% block pageHeaderTitleHolder %}
+		<div class="row">
+			<div class="jumbotron offset-lg-2 col-lg-8">
+				<h1 class="text-center">
+					{{ "#{app.request.attributes.get('_route')}.header.title"|trans }}
+				</h1>
+				{% block subcontent %}{{ headerSubContent|default('') }}{% endblock %}
+			</div>
+		</div>
+	{% endblock pageHeaderTitleHolder %}
+</header>

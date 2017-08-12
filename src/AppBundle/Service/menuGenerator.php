@@ -28,6 +28,8 @@ class menuGenerator
 
 	private $publicMenuAllowedControllers = [
 		'AppBundle:Home:home',
+	    'AppBundle:Event:events',
+	    'AppBundle:Band:bands'
 	];
 
 	public function __construct( RouterInterface $router, EntityManagerInterface $entityManager, ControllerNameParser $controllerNameParser, RequestStack $requestStack, EngineInterface $twig )

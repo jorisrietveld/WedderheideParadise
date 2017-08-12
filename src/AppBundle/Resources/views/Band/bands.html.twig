@@ -1,0 +1,22 @@
+{#
+ # Author: Joris Rietveld <jorisrietveld@gmail.com>
+ # Created: 12-08-2017 11:46
+ # Licence: GPLv3 - General Public Licence version 3
+ #}
+{% extends "@App/design/layout/scroller-layout.html.twig" %}
+
+{% block header %}
+	{% set headerSubContent %}
+		<button class="btn btn-info">Hello world</button>
+	{% endset %}
+	{{ parent() }}
+{% endblock %}
+
+{% block pageContent %}
+	{% embed '@App/design/modules/scroller-section.html.twig' with { 'sectionId': 'about', 'sectionTitleKey': 'bands.content.title.about' } %}
+	{% endembed %}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}

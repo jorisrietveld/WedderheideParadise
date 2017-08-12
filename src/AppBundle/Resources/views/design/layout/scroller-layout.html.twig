@@ -9,22 +9,18 @@
 {# Implement an page layout defined in the base file. #}
 {% block layout %}
 
-	{# Define where the  #}
+	{# Embed the scroller-navigation module template into the scroller layout. #}
 	{% embed '@App/design/modules/scroller-navigation.html.twig' %}
 	{% endembed %}
 
-	<header id="page-top" class="container-fluid header-standard section">
-		{% block pageHeaderTitleHolder %}
-			<div class="row">
-				<h1 class="{{ titleClass }}">
-					{{ pageHeaderTitle }}
-				</h1>
-			</div>
-		{% endblock pageHeaderTitleHolder %}
-	</header>
+	{# Embed the scroller-navigation module template into the scroller layout. #}
+	{% block header %}
+		{% embed '@App/design/modules/scroller-header.html.twig' %}
+		{% endembed %}
+	{% endblock header %}
 
 	{# The main content of the webpage.#}
-	<main id="main-wrapper" class="container-fluid">
+	<main id="main-wrapper" class="container">
 		{% block pageContent %}{% endblock %}
 	</main>
 

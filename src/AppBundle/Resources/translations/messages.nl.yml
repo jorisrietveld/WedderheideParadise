@@ -3,14 +3,26 @@
 # Licence: GPLv3 - General Public Licence version 3
 metatags:
     titles:
-        default: 'Wedderheide Paradise'
-        home: 'Wedderheide Paradise'
+        default: 'Wedderheide Party'
+        home: 'Wedderheide Party'
+        editions: 'Wedderheide Party - edities'
+        edition: 'Wedderheide Party - '
+        bands: 'Wedderheide Party - bands'
+        band: 'Wedderheide Party - '
     keywords:
         default: 'Wedderhiede, Wedderheide Paradise, Wedderheide Party, Wedde, Leo den Ouden, Festival, Artcarnavale, Groningen, Joris Rietveld'
         home: 'Wedderhiede, Wedderheide Paradise, Wedderheide Party, Wedde, Leo den Ouden, Festival, Artcarnavale, Groningen, Joris Rietveld'
+        editions: 'Wedderhiede, Wedderheide Paradise, Wedderheide Party, Wedde, Leo den Ouden, Festival, Groningen, Joris Rietveld, edities, edities overzicht'
+        edition: 'Wedderhiede, Wedderheide Paradise, Wedderheide Party, Wedde, Leo den Ouden, Festival, Groningen, Joris Rietveld, edities'
+        bands: 'Wedderhiede, Wedderheide Paradise, Wedderheide Party, Wedde, Leo den Ouden, Festival, Groningen, Joris Rietveld, bands, bands overzicht'
+        band: 'Wedderhiede, Wedderheide Paradise, Wedderheide Party, Wedde, Leo den Ouden, Festival, Groningen, Joris Rietveld, bands'
     descriptions:
-        default: 'Dit is de website van de Wedderheide party.'
-        home: 'Dit is de website van de Wedderheide party.'
+        default: 'Dit is de website van de Wedderheide party. Op deze website kan je informatie vinden over het festival zoals contact, route en band informatie buiten dat zijn er ook fotos en videos van de voorgaande edities te bekijken.'
+        home: 'Dit is de website van de Wedderheide party. Op deze website kan je informatie vinden over het festival zoals contact, route en band informatie buiten dat zijn er ook fotos en videos van de voorgaande edities te bekijken.'
+        editions: 'Op deze web pagina wordt een overzicht gegeven van de voorgaande edities van de wedderheide party. In het overzicht wordt verwezen naar paginas met fotos en videos.'
+        edition: 'Op deze web pagina zijn fotos en videos te vinden van de wedderheide party editie van '
+        bands: 'Op deze web pagina wordt een overzicht gegeven van bands die gespeeld hebben op de wedderheide party. In het overzicht wordt verwezen naar een pagina van de band met een link naar hun website.'
+        band: 'Hier is informatie te vinden over de band: '
 
 navigation:
     home:
@@ -43,3 +55,13 @@ home:
                 email: 'Email adres'
                 message: 'Bericht'
                 send: 'Verstuuren'
+editions:
+    header:
+        title: 'Wedderheide Party Edities'
+    content:
+        title:
+            generic: 'Editie van '
+
+bands:
+    header:
+        title: 'Bands die gespeeld hebben op wedderheide'

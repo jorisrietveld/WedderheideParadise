@@ -10,13 +10,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description"
-	      content="{% block metaPageDescription %}{{ 'metatags.descriptions.home'|trans }}{% endblock %}">
+	      content="{% block metaPageDescription %}{{ "metatags.descriptions.#{app.request.attributes.get('_route')}"|trans }}{% endblock %}">
 	<meta name="keywords"
-	      content="{% block metaKeywords %}{{ 'metatags.keywords.default'|trans }}{% endblock %}">
+	      content="{% block metaKeywords %}{{ "metatags.keywords.#{app.request.attributes.get('_route')}"|trans }}{% endblock %}">
 	<meta name="author" content="{% block metaAuthor %}Joris Rietveld{% endblock %}">
 	<meta name="robots" content="{% block metaRobots %}index, follow{% endblock %}">
 	<meta name="revisit-after" content="{% block metaRevisit %}3 days{% endblock %}">
-	<title>{% block pageTitle %}{{ 'metatags.titles.default'|trans }}{% endblock %}</title>
+	<title>{% block pageTitle %}{{"metatags.titles.#{app.request.attributes.get('_route')}"|trans }}{% endblock %}</title>
 
 	{# Include and minify the cascading style sheeds. #}
 	{% block stylesheets %}
