@@ -35,9 +35,14 @@ navigation:
         title: 'Party Edities'
     bands:
         title: 'Bands'
+    agenda:
+        title: 'agenda'
     autentication:
         login:
             button: 'Aanmelden'
+        register:
+            button: 'Registreren'
+
 home:
     header:
         title: 'Wedderheide Paradise'

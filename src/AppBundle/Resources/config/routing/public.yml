@@ -45,6 +45,7 @@ editions:
     defaults:
         _controller: 'AppBundle:Event:events'
         linkTranslationKey: 'navigation.editions.title'
+        _fragment: 'page-top'
 
 # This route leads to an individual event index page by year.
 edition:
@@ -62,6 +63,7 @@ bands:
     defaults:
         _controller: 'AppBundle:Band:bands'
         linkTranslationKey: 'navigation.bands.title'
+        _fragment: 'page-top'
 
 # This route leads to an individual band that played at wedderheide.
 band:
@@ -71,6 +73,13 @@ band:
         linkTranslationKey: 'navigation.bands.title'
         parent: 'bands'
         bandName: 'default'
+
+agenda:
+    path: '/agenda'
+    defaults:
+        _controller: 'AppBundle:Home:home'
+        linkTranslationKey: 'navigation.agenda.title'
+        _fragment: 'page-top'
 
 ############################################################################[ Authentication and authorization Routes ]
 # This route leads to the login page for.

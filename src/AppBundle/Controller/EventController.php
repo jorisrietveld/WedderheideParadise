@@ -10,7 +10,7 @@ class EventController extends Controller
     public function eventsAction()
     {
 	    return $this->render( 'AppBundle:Event:events.html.twig', [
-		    'renderedMenuLinks' => $this->get( menuGenerator::class )->renderMenu(),
+		    'renderedMenuLinks' => $this->get( menuGenerator::class )->renderMenu(['2012','2013']),
 	    ] );
     }
 

@@ -28,8 +28,8 @@ class menuGenerator
 
 	private $publicMenuAllowedControllers = [
 		'AppBundle:Home:home',
-	    'AppBundle:Event:events',
-	    'AppBundle:Band:bands'
+		'AppBundle:Event:events',
+		'AppBundle:Band:bands',
 	];
 
 	public function __construct( RouterInterface $router, EntityManagerInterface $entityManager, ControllerNameParser $controllerNameParser, RequestStack $requestStack, EngineInterface $twig )
@@ -64,24 +64,34 @@ class menuGenerator
 
 		foreach ( $this->getRoutesForMenu() as $routeName => $route )
 		{
-			if( $route->hasDefault('parent') && $route->getDefault('parent') == $this->requestStack->getCurrentRequest()->get('_route') )
+			if ( $route->hasDefault( 'parent' ) && $route->getDefault( 'parent' ) == $this->requestStack->getCurrentRequest()->get( '_route' ) )
 			{
-				$output .= $this->renderMenuItem([
-					'pathName' => $routeName,
-				    'linkTranslationKey' => $route->getDefault('linkTranslationKey'),
-				    'slugs' => $slugs
-				]);
-			}
-			elseif( !$route->hasDefault('parent') )
-			{
-				$output .= $this->renderMenuItem([
-					'addClass' => 'text-white',
-					'pathName' => $routeName,
-					'linkTranslationKey' => $route->getDefault('linkTranslationKey'),
-				]);
-			}
-			else{
+				$output .= $this->renderMenuItem( [
+					'pathName'           => $routeName,
+					'linkTranslationKey' => $route->getDefault( 'linkTranslationKey' ),
+					'slugs'              => $slugs,
+				] );
 
+			}
+			elseif ( !$route->hasDefault( 'parent' ) )
+			{
+				$output .= $this->renderMenuItem( [
+					'addClass'           => 'text-white',
+					'pathName'           => $routeName,
+					'linkTranslationKey' => $route->getDefault( 'linkTranslationKey' ),
+				] );
+
+				if ( count( $slugs ) && substr( $routeName, 8 ) == $this->requestStack->getCurrentRequest()->get( '_route' ) )
+				{
+					foreach ( $slugs as $slug )
+					{
+						$output .= $this->renderMenuItem( [
+							'pathName'           => $routeName,
+							'linkTranslationKey' => $slug,
+							'slug'               => [ '_fragment' => $slug ],
+						] );
+					}
+				}
 			}
 		}
 

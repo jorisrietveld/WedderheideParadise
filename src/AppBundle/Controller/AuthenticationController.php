@@ -8,6 +8,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Service\menuGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Intl\Exception\NotImplementedException;
 
@@ -15,7 +16,9 @@ class AuthenticationController extends Controller
 {
 	public function loginAction()
 	{
-		throw new NotImplementedException('Not implemented!');
+		return $this->render('@App/Home/login.html.twig',[
+			'renderedMenuLinks' => $this->get( menuGenerator::class )->renderMenu()
+	]);
 	}
 
 	public function registerAction()
